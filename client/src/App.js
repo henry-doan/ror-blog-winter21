@@ -5,6 +5,7 @@ import NoMatch from './components/shared/NoMatch';
 import Blogs from './components/blogs/Blogs';
 import Navbar from './components/shared/Navbar';
 import BlogShow from './components/blogs/BlogShow';
+import PostShow from './components/posts/PostShow';
 
 const App = () => (
   <>
@@ -15,6 +16,7 @@ const App = () => (
       <Route exact path='/about' element={<About />} />
       <Route exact path='/blogs' element={<Blogs />} />
       <Route exact path='/blogs/:blogId' element={<BlogShow />} />
+      <Route exact path='/blogs/:blogId/posts/:postId' element={<PostShow />} />
       <Route path='*' element={<NoMatch />} />
     </Routes>
   </>
