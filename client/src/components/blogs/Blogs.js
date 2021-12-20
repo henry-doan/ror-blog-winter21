@@ -22,11 +22,35 @@ const Blogs = ({}) => {
       .catch( err => console.log(err))
   }
 
+  const updateBlog = (id, blog) => {
+    axios.put(`/api/blogs/${id}`, { blog })
+      .then( res => {
+        const newUpdatedBlogs = blogs.map( b => {
+          if (b.id === id) {
+            return res.data
+          }
+          return b 
+        })
+        setBlogs(newUpdatedBlogs)
+      })
+      .catch( err => console.log(err))
+  }
+
+  const deleteBlog = (id) => {
+    axios.delete(`/api/blogs/${id}`)
+      .then( res => setBlogs( blogs.filter( b => b.id !== id )))
+      .catch( err => console.log(err))
+  }
+
   return (
     <>
       <h1>Blogs Page</h1>
       <BlogForm addBlog={addBlog} />
-      <BlogList blogs={blogs} />
+      <BlogList 
+        blogs={blogs} 
+        updateBlog={updateBlog}
+        deleteBlog={deleteBlog}
+      />
     </>
   )
 }

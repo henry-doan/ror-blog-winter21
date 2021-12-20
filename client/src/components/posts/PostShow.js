@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PostForm from './PostForm';
+import Comments from '../comments/Comments';
 
 // const PostShow = ({}) => {
 //   const [post, setPost] = useState({ title: '', body: '', mins: 0 })
@@ -48,6 +49,7 @@ const PostShow = ({ id, title, body, mins, deletePost, updatePost }) => {
         <button onClick={() => setEdit(true)}>Edit</button>
       }
       <button onClick={() => deletePost(id)}>Delete</button>
+      <Comments postId={id} />
     </>
   )
 }

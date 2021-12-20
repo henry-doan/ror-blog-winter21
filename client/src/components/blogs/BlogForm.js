@@ -1,11 +1,22 @@
 import { useState, useEffect } from 'react';
 
-const BlogForm = ({ addBlog }) => {
+const BlogForm = ({ addBlog, id, title, desc, updateBlog, setEdit }) => {
   const [blog, setBlog] = useState({ title: '', desc: '' })
+
+  useEffect( () => {
+    if (id) {
+      setBlog({ title, desc })
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addBlog(blog)
+    if (id) {
+      updateBlog(id, blog)
+      setEdit(false)
+    } else {
+      addBlog(blog)
+    }
     setBlog({ title: '', desc: '' })
   }
 

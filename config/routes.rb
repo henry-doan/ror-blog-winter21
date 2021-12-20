@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     resources :blogs do
       resources :posts
     end
+
+    resources :posts, except: [:index, :show, :create, :update, :destroy] do
+      resources :comments
+    end
+
   end
 
 end
